@@ -51,7 +51,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        "Profil Anda",
+                        "Lihat Profile",
                         style: TextStyle(fontSize: 12),
                       ),
                     ],
@@ -59,8 +59,31 @@ class ProfilePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),  // Geser ke bawah
+            SizedBox(height: 16), // Geser ke bawah
             // Tambahkan konten profil di sini
+
+            // Tambahkan daftar "Yang Baru", "Riwayat Mendengarkan", dan "Pengaturan dan Privasi"
+            ListTile(
+              leading: Icon(Icons.flash_on), // Icon flash atau petir atau trending
+              title: Text("Yang Baru"),
+              onTap: () {
+                // Tambahkan aksi yang sesuai ketika "Yang Baru" diklik
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.access_time), // Icon waktu/riwayat
+              title: Text("Riwayat Mendengarkan"),
+              onTap: () {
+                // Tambahkan aksi yang sesuai ketika "Riwayat Mendengarkan" diklik
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings), // Icon setting
+              title: Text("Pengaturan dan Privasi"),
+              onTap: () {
+                // Tambahkan aksi yang sesuai ketika "Pengaturan dan Privasi" diklik
+              },
+            ),
           ],
         ),
       ),

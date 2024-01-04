@@ -36,8 +36,8 @@ class _TabbarState extends State<Tabbar> {
             label: "Playlist",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: "Add Data",
+            icon: Icon(Icons.circle),
+            label: "Premium",
           ),
         ],
       ),

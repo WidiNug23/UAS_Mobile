@@ -1,4 +1,3 @@
-// database_helper.dart
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:synchronized/synchronized.dart';
@@ -46,6 +45,14 @@ class DatabaseHelper {
 
         await db.execute('''
           CREATE TABLE playlists (
+            id INTEGER PRIMARY KEY,
+            name TEXT,
+            cover_path TEXT
+          )
+        ''');
+
+        await db.execute('''
+          CREATE TABLE profile (
             id INTEGER PRIMARY KEY,
             name TEXT,
             cover_path TEXT
@@ -126,6 +133,36 @@ class DatabaseHelper {
       return await dbClient.delete('playlists', where: 'id = ?', whereArgs: [id]);
     } catch (e) {
       print('Error deleting playlist: $e');
+      return -1;
+    }
+  }
+
+  Future<int> insertProfile(String name, String coverPath) async {
+    try {
+      Database dbClient = await db;
+      return await dbClient.insert('profile', {'name': name, 'cover_path': coverPath});
+    } catch (e) {
+      print('Error inserting profile: $e');
+      return -1;
+    }
+  }
+
+  Future<List<Map<String, dynamic>>> getProfiles() async {
+    try {
+      Database dbClient = await db;
+      return await dbClient.query('profile');
+    } catch (e) {
+      print('Error getting profiles: $e');
+      return [];
+    }
+  }
+
+  Future<int> updateProfile(int id, String name, String coverPath) async {
+    try {
+      Database dbClient = await db;
+      return await dbClient.update('profile', {'name': name, 'cover_path': coverPath}, where: 'id = ?', whereArgs: [id]);
+    } catch (e) {
+      print('Error updating profile: $e');
       return -1;
     }
   }
